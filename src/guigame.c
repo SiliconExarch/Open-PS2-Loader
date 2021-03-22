@@ -868,12 +868,12 @@ int guiGameSaveConfig(config_set_t *configSet, item_list_t *support)
             configRemoveKey(configSet, CONFIG_ITEM_CHEATMODE);
 
         if (EnableWSHack != 0)
-            result = configSetInt(configSet, CONFIG_ITEM_ENABLEWSHACK, EnableWSHack);
+            result = configSetInt(configSet, CONFIG_ITEM_ENABLE_WS_HACK, EnableWSHack);
         else
-            configRemoveKey(configSet, CONFIG_ITEM_ENABLEWSHACK);
+            configRemoveKey(configSet, CONFIG_ITEM_ENABLE_WS_HACK);
     } else if (gCheatSource == SETTINGS_GLOBAL) {
         configSetInt(configGame, CONFIG_ITEM_ENABLECHEAT, EnableCheat);
-        configSetInt(configGame, CONFIG_ITEM_CHEATMODE, CheatMode)
+        configSetInt(configGame, CONFIG_ITEM_CHEATMODE, CheatMode);
         configSetInt(configGame, CONFIG_ITEM_ENABLE_WS_HACK, EnableWSHack);
     }
 

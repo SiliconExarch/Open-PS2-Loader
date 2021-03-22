@@ -726,7 +726,7 @@ static void sbCreateFoldersFromList(const char *path, const char **folders)
 
 void sbCreateFolders(const char *path, int createDiscImgFolders)
 {
-    const char *basicFolders[] = {"CFG", "THM", "LNG", "ART", "VMC", "CHT", "APPS", NULL};
+    const char *basicFolders[] = {"CFG", "THM", "LNG", "ART", "VMC", "CHT", "APPS", "WIDE", NULL};
     const char *discImgFolders[] = {"CD", "DVD", NULL};
 
     sbCreateFoldersFromList(path, basicFolders);
@@ -754,6 +754,35 @@ int sbLoadCheats(const char *path, const char *file)
                 result = 0;
             } else {
                 LOG("No cheats found\n");
+                result = -ENOENT;
+            }
+        }
+    } else {
+        result = 0;
+    }
+
+    return result;
+}
+
+int sbLoadWSHacks(const char *path, const char *file)
+{
+    char widefile[64];
+    const int *wideList;
+    int result;
+
+    if (GetWSHacksEnabled()) {
+        snprintf(widefile, sizeof(widefile), "%sWIDE/%s.cht", path, file);
+        LOG("Loading Widescreen Hack File %s\n", widefile);
+        if ((result = load_cheats(widefile)) < 0) {
+            LOG("Error: failed to load widescreen hacks\n");
+        } else {
+            wideList = GetCheatsList();
+
+            if (!((wideList[0] == 0) && (wideList[1] == 0))) {
+                LOG("Widescreen hacks found\n");
+                result = 0;
+            } else {
+                LOG("No widescreen hacks found\n");
                 result = -ENOENT;
             }
         }

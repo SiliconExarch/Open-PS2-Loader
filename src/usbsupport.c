@@ -353,6 +353,16 @@ static void usbLaunchGame(int id, config_set_t *configSet)
         }
     }
 
+    if ((result = sbLoadWSHacks(usbPrefix, game->startup)) < 0) {
+        switch (result) {
+            case -ENOENT:
+                guiWarning(_l(_STR_NO_WS_HACKS_FOUND), 10);
+                break;
+            default:
+                guiWarning(_l(_STR_ERR_WS_HACKS_LOAD_FAILED), 10);
+        }
+    }
+
     if (gRememberLastPlayed) {
         configSetStr(configGetByType(CONFIG_LAST), "last_played", game->startup);
         saveConfig(CONFIG_LAST, 0);

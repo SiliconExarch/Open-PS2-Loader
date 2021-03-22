@@ -60,6 +60,7 @@ USB modes:
 | "LNG" | for translation support | all |
 | "CHT" | for cheats files | all |
 | "CFG-DEV" | for saving per-game configuration files, when used from a OPL dev build - aka beta build | all |
+| "WIDE" | for widescreen hack files | all |
 
 OPL will automatically create the above directory structure the first time
 you launch it and enable your favourite device. For HDD users, a 128Mb +OPL

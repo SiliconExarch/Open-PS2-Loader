@@ -390,6 +390,16 @@ static void hddLaunchGame(int id, config_set_t *configSet)
         }
     }
 
+        if ((result = sbLoadWSHacks(hddPrefix, game->startup)) < 0) {
+        switch (result) {
+            case -ENOENT:
+                guiWarning(_l(_STR_NO_WS_HACKS_FOUND), 10);
+                break;
+            default:
+                guiWarning(_l(_STR_ERR_WS_HACKS_LOAD_FAILED), 10);
+        }
+    }
+
     settings = (struct cdvdman_settings_hdd *)((u8 *)irx + i);
 
     // patch 48bit flag

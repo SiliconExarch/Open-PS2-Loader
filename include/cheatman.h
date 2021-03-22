@@ -61,6 +61,7 @@ typedef struct
 
 void InitCheatsConfig(config_set_t *configSet);
 int GetCheatsEnabled(void);
+int GetWSHacksEnabled(void);
 const int *GetCheatsList(void);
 int load_cheats(const char *cheatfile);
 

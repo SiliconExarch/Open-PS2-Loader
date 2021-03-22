@@ -50,6 +50,7 @@ enum CONFIG_INDEX {
 #define CONFIG_ITEM_CHEATSSOURCE "$CheatsSource"
 #define CONFIG_ITEM_ENABLECHEAT "$EnableCheat"
 #define CONFIG_ITEM_CHEATMODE "$CheatMode"
+#define CONFIG_ITEM_ENABLE_WS_HACK "$EnableWSHack"
 
 #define CONFIG_ITEM_PADEMUSOURCE "$PADEMUSource"
 #define CONFIG_ITEM_ENABLEPADEMU "$EnablePadEmu"

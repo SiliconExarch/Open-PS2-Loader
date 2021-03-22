@@ -643,6 +643,16 @@ static void ethLaunchGame(int id, config_set_t *configSet)
         }
     }
 
+    if ((result = sbLoadWSHacks(ethPrefix, game->startup)) < 0) {
+        switch (result) {
+            case -ENOENT:
+                guiWarning(_l(_STR_NO_WS_HACKS_FOUND), 10);
+                break;
+            default:
+                guiWarning(_l(_STR_ERR_WS_HACKS_LOAD_FAILED), 10);
+        }
+    }
+
     settings = (struct cdvdman_settings_smb *)((u8 *)(&smb_cdvdman_irx) + i);
 
     switch (game->format) {

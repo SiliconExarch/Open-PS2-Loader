@@ -28,6 +28,7 @@
 
 static int gEnableCheat; // Enables PS2RD Cheat Engine - 0 for Off, 1 for On
 static int gCheatMode;   // Cheat Mode - 0 Enable all cheats, 1 Cheats selected by user
+static int gEnableWSHack; // Enables Widescreen Hacks - 0 for Off, 1 for On
 
 static int gCheatList[MAX_CHEATLIST]; //Store hooks/codes addr+val pairs
 
@@ -39,6 +40,7 @@ void InitCheatsConfig(config_set_t *configSet)
     gCheatSource = 0;
     gEnableCheat = 0;
     gCheatMode = 0;
+    gEnableWSHack = 0;
     memset(gCheatList, 0, sizeof(gCheatList));
 
     if (configGetInt(configSet, CONFIG_ITEM_CHEATSSOURCE, &gCheatSource)) {
@@ -46,16 +48,23 @@ void InitCheatsConfig(config_set_t *configSet)
         if (configGetInt(configSet, CONFIG_ITEM_ENABLECHEAT, &gEnableCheat) && gEnableCheat) {
             configGetInt(configSet, CONFIG_ITEM_CHEATMODE, &gCheatMode);
         }
+        configGetInt(configSet, CONFIG_ITEM_ENABLE_WS_HACK, &gEnableWSHack);
     } else {
         if (configGetInt(configGame, CONFIG_ITEM_ENABLECHEAT, &gEnableCheat) && gEnableCheat) {
             configGetInt(configGame, CONFIG_ITEM_CHEATMODE, &gCheatMode);
         }
+        configGetInt(configGame, CONFIG_ITEM_ENABLE_WS_HACK, &gEnableWSHack);
     }
 }
 
 int GetCheatsEnabled(void)
 {
     return gEnableCheat;
+}
+
+int GetWSHacksEnabled(void)
+{
+    return gEnableWSHack;
 }
 
 const int *GetCheatsList(void)

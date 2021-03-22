@@ -787,7 +787,7 @@ void sysLaunchLoaderElf(const char *filename, const char *mode_str, int size_cdv
             local_netmask[0], local_netmask[1], local_netmask[2], local_netmask[3],
             local_gateway[0], local_gateway[1], local_gateway[2], local_gateway[3],
             gETHOpMode,
-            GetCheatsEnabled() ? (unsigned int)GetCheatsList() : 0,
+            (GetCheatsEnabled() || GetWSHacksEnabled()) ? (unsigned int)GetCheatsList() : 0,
             GetGSMEnabled() PADEMU_ARGUMENT);
     argv[argc] = config_str;
     argc++;

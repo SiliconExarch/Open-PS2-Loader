@@ -777,14 +777,15 @@ int sbLoadWSHacks(const char *path, const char *file)
             LOG("Error: failed to load widescreen hacks\n");
         } else {
             wideList = GetCheatsList();
-
+            result = 0;
+            /* I'll worry abgout this later
             if (!((wideList[0] == 0) && (wideList[1] == 0))) {
                 LOG("Widescreen hacks found\n");
                 result = 0;
             } else {
                 LOG("No widescreen hacks found\n");
                 result = -ENOENT;
-            }
+            }*/
         }
     } else {
         result = 0;

@@ -349,7 +349,7 @@ int load_cheats(const char *cheatfile)
     char *buf = NULL;
     int ret;
 
-    memset(gCheatList, 0, sizeof(gCheatList));
+    //memset(gCheatList, 0, sizeof(gCheatList)); Is this necessary? sbPrepare calls InitCheatsConfig which already zeroes the cheat list
 
     LOG("%s: Reading cheat file '%s'...", __FUNCTION__, cheatfile);
     buf = read_text_file(cheatfile, 0);
